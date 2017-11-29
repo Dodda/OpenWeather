@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{CCE617ED-1E43-44EC-9708-D1C503F3D4E3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OpenWeather Status">
+    <Files>
+      <File FileName="OpenWeather/ViewModels/CityViewModel.cs" Line="22" Column="1" />
+      <File FileName="OpenWeather/GlobalSettings.cs" Line="14" Column="1" />
+      <File FileName="iOS/HomeViewController.cs" Line="36" Column="15" />
+      <File FileName="iOS/CityViewController.cs" Line="23" Column="47" />
+      <File FileName="OpenWeather Status" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.OpenWeather.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.515FE3FF-F265-439D-889C-BF9FAE1F2D37">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam />
+  </MonoDevelop.Ide.ItemProperties.OpenWeather.iOS>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.OpenWeather.UITests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.OpenWeather.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+</Properties>
