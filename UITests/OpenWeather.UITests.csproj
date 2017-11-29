@@ -48,7 +48,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="CitySearchTest.cs" />
     <Compile Include="AppInitializer.cs" />
   </ItemGroup>
   <ItemGroup>

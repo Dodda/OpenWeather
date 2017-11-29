@@ -9,7 +9,7 @@ namespace OpenWeather.UnitTest
     public class Test
     {
         [Test()]
-        public void TestCase()
+        public void WeatherServiceTest()
         {
             IWeatherService service = new WeatherService();
             string cityName = "Chennai";
