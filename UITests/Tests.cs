@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 
 namespace OpenWeather.UITests
 {
@@ -39,33 +35,5 @@ namespace OpenWeather.UITests
             app.Screenshot("Home Screen With Favorites List");
             app.Tap(c => c.Class("UITableViewCell").Text("Hyderabad"));
         }
-
-        //[Test]
-        //public void CitySearch()
-        //{
-        //    //app.Repl();
-
-        //}
-
-        //[Test]
-        //public void CityScreen()
-        //{
-        //}
-
-        //[Test]
-        //public void AddToFavorites()
-        //{
-        //}
-
-        //[Test]
-        //public void BackToHomeScreen()
-        //{
-            
-        //}
-
-        //[Test]
-        //public void ClikOnFavoriteCity()
-        //{
-        //}
     }
 }

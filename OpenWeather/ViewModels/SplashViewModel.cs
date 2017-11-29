@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OpenWeather.ViewModels
+﻿namespace OpenWeather.ViewModels
 {
     public class SplashViewModel : BaseViewModel
     {

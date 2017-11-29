@@ -4,7 +4,6 @@ using Android.OS;
 using Android.Content;
 using System.Collections.Generic;
 using OpenWeather.ViewModels;
-using System.Threading.Tasks;
 using OpenWeather.Models;
 using Newtonsoft.Json;
 

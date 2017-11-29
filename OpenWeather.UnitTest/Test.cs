@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 using OpenWeather.Interfaces;
 using OpenWeather.Services;
 using System.Threading.Tasks;

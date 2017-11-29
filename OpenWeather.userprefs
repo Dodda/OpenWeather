@@ -1,11 +1,7 @@
 ﻿<Properties StartupConfiguration="{CCE617ED-1E43-44EC-9708-D1C503F3D4E3}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OpenWeather Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CAP Status">
     <Files>
-      <File FileName="OpenWeather/ViewModels/CityViewModel.cs" Line="22" Column="1" />
-      <File FileName="OpenWeather/GlobalSettings.cs" Line="14" Column="1" />
-      <File FileName="iOS/HomeViewController.cs" Line="36" Column="15" />
-      <File FileName="iOS/CityViewController.cs" Line="23" Column="47" />
-      <File FileName="OpenWeather Status" />
+      <File FileName="CAP Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

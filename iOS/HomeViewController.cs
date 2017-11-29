@@ -1,8 +1,6 @@
-using Foundation;
 using System;
 using UIKit;
 using OpenWeather.ViewModels;
-using System.Threading.Tasks;
 using OpenWeather.Models;
 using System.Collections.Generic;
 

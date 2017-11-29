@@ -1,10 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using OpenWeather.Interfaces;
-using OpenWeather.Models;
-using OpenWeather.Services;
-
-namespace OpenWeather.ViewModels
+﻿namespace OpenWeather.ViewModels
 {
     public class CityViewModel : BaseViewModel
     {
