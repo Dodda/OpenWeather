@@ -1,6 +1,4 @@
-﻿using OpenWeather.UITests.Screens;
-using OpenWeather.UITests.Screens.CitySearch;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 using Xamarin.UITest;
 
 namespace OpenWeather.UITests
@@ -26,7 +24,7 @@ namespace OpenWeather.UITests
             }
             else if (platform == Platform.Android)
             {
-                FeatureContext.Current.Add(ScreenNames.CitySearch, new AndroidCitySearchScreen());
+                //FeatureContext.Current.Add(ScreenNames.CitySearch, new AndroidCitySearchScreen());
                // FeatureContext.Current.Add(ScreenNames.CityDetails, new AndroidAddTaskScreen());
             }
         }
