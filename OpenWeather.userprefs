@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{CCE617ED-1E43-44EC-9708-D1C503F3D4E3}|Default">
+﻿<Properties StartupConfiguration="{2316A97A-FE1B-4F14-9B76-731134B5B905}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="CAP Status">
     <Files>
-      <File FileName="OpenWeather.UnitTest/Test.cs" Line="22" Column="1" />
-      <File FileName="UITests/CitySearchTest.cs" Line="16" Column="10" />
+      <File FileName="UITests/city_search.feature.cs" Line="71" Column="78" />
+      <File FileName="UITests/Features/SearchForCityFeature.cs" Line="13" Column="1" />
       <File FileName="CAP Status" />
     </Files>
     <Pads>
@@ -10,7 +10,12 @@
         <State name="__root__">
           <Node name="OpenWeather" expanded="True">
             <Node name="OpenWeather.UITests" expanded="True">
-              <Node name="Test Apps" expanded="True" />
+              <Node name="Test Apps" expanded="True">
+                <Node name="OpenWeather.Droid" selected="True" />
+              </Node>
+              <Node name="OpenWeather" expanded="True">
+                <Node name="UITests" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -19,7 +24,12 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ddodda/CAP/UITests/Features/FeatureBase.cs" relfile="UITests/Features/FeatureBase.cs" line="26" column="1" />
+      <Breakpoint file="/Users/ddodda/CAP/UITests/Features/FeatureBase.cs" relfile="UITests/Features/FeatureBase.cs" line="18" column="1" />
+      <Breakpoint file="/Users/ddodda/CAP/UITests/AppInitializer.cs" relfile="UITests/AppInitializer.cs" line="21" column="1" />
+      <Breakpoint file="/Users/ddodda/CAP/UITests/city_search.feature.cs" relfile="UITests/city_search.feature.cs" line="23" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.OpenWeather.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.515FE3FF-F265-439D-889C-BF9FAE1F2D37">
