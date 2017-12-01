@@ -11,10 +11,10 @@ namespace OpenWeather.BDDTest
             app.Screenshot("I am on the Home Screen");
         }
 
-        [When(@"I have entered Hyderabad into the textfield")]
-        public void WhenIHaveEnteredHyderabadIntoTheTextfield()
+        [When(@"I have entered ""(.*)"" into the textfield")]
+        public void WhenIHaveEnteredHyderabadIntoTheTextfield(string cityName)
         {
-            app.EnterText(x => x.Id("searchText"), "Hyderabad");  
+            app.EnterText(x => x.Id("searchText"), cityName);  
         }
 
         [When(@"I press search")]

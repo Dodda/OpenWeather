@@ -8,7 +8,13 @@
         <State name="__root__">
           <Node name="OpenWeather" expanded="True">
             <Node name="OpenWeather.BDDTest" expanded="True">
-              <Node name="Test Apps" expanded="True" />
+              <Node name="OpenWeather" expanded="True">
+                <Node name="BDDTest" expanded="True">
+                  <Node name="CitySearchFeature" expanded="True">
+                    <Node name="CitySearchFeature(iOS)" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>

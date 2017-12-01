@@ -37,9 +37,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-    </None>
     <None Include="packages.config" />
     <None Include="App.config" />
     <None Include="city_search.feature">
@@ -48,18 +45,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.feature.cs">
-      <DependentUpon>Test.feature</DependentUpon>
-    </Compile>
-    <Compile Include="TestSteps.cs" />
     <Compile Include="city_search.feature.cs">
       <DependentUpon>city_search.feature</DependentUpon>
     </Compile>
-    <Compile Include="CitySearchSteps.cs" />
     <Compile Include="AppInitializer.cs" />
-    <Compile Include="FeatureBase.cs" />
-    <Compile Include="CitySearchFeature.cs" />
-    <Compile Include="StepsBase.cs" />
+    <Compile Include="Features\CitySearchFeature.cs" />
+    <Compile Include="Features\FeatureBase.cs" />
+    <Compile Include="Steps\CitySearchSteps.cs" />
+    <Compile Include="Steps\StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Droid\OpenWeather.Droid.csproj">
@@ -74,6 +67,10 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Steps\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

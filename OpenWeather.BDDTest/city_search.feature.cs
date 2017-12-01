@@ -75,7 +75,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
  testRunner.Given("I am on the Home Screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
- testRunner.When("I have entered Hyderabad into the textfield", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I have entered \"Hyderabad\" into the textfield", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
  testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
