@@ -12,7 +12,7 @@ namespace OpenWeather.BDDTest
                 return ConfigureApp.Android.StartApp();
             }
 
-            return ConfigureApp.iOS.EnableLocalScreenshots().StartApp();
+            return ConfigureApp.iOS.StartApp();
         }
     }
 }

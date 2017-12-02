@@ -7,3 +7,6 @@ Scenario: City Search
 	When I have entered "Hyderabad" into the textfield
 	When I press search
 	Then the result should be displayed on the city details screen
+    When I press Add To Favorites button
+    When I navigate back to Home Screen
+    Then I could able to see the City name on the favorites list

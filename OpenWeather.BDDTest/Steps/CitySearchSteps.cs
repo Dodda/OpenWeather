@@ -28,5 +28,23 @@ namespace OpenWeather.BDDTest
         {
             app.Screenshot("The result on the city details screen");
         }
+
+        [When(@"I press Add To Favorites button")]
+        public void WhenIPressAddToFavoritesButton()
+        {
+            app.Tap(x => x.Marked("Add To Favorites"));
+        }
+
+        [When(@"I navigate back to Home Screen")]
+        public void WhenINavigateBackToHomeScreen()
+        {
+            app.Back();
+        }
+
+        [Then(@"I could able to see the City name on the favorites list")]
+        public void ThenICouldAbleToSeeTheCityNameOnTheFavoritesList()
+        {
+            app.Screenshot("Home Screen with City Favorites List");
+        }
     }
 }

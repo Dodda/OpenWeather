@@ -80,6 +80,12 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
  testRunner.Then("the result should be displayed on the city details screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+    testRunner.When("I press Add To Favorites button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+    testRunner.When("I navigate back to Home Screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
+    testRunner.Then("I could able to see the City name on the favorites list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
