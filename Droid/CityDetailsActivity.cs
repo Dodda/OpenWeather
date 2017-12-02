@@ -2,43 +2,38 @@
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.Droid.Views;
 using Newtonsoft.Json;
 using OpenWeather.Models;
 using OpenWeather.ViewModels;
 namespace OpenWeather.Droid
 {
     [Activity]
-    public class CityDetailsActivity : Activity
+    public class CityDetailsActivity : MvxActivity<CityViewModel>
     {
-        private CityWeather cityDetails;
-        private CityViewModel ViewModel;
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.CityLayout);
-
-            ViewModel = new CityViewModel();
-            TextView textCityName = FindViewById<TextView>(Resource.Id.textCity);
-            cityDetails = JsonConvert.DeserializeObject<CityWeather>(Intent.GetStringExtra("JsonData"));
-            textCityName.Text = cityDetails.name;
-            FindViewById<TextView>(Resource.Id.textTemperature).Text = cityDetails.main.temp.ToString();
-            FindViewById<TextView>(Resource.Id.textLatitude).Text = cityDetails.coord.lat.ToString();
-            FindViewById<TextView>(Resource.Id.textLongitude).Text = cityDetails.coord.lon.ToString();
-            FindViewById<TextView>(Resource.Id.textWindSpeed).Text = cityDetails.wind.speed.ToString();
             Button buttonFavorites = FindViewById<Button>(Resource.Id.btnAddToFav);
 
-            //Asigning the data from ViewModel
-            Title = ViewModel.PageTitle;
+            //MvvmCross Binding for UI Controls.
             buttonFavorites.Text = ViewModel.ButtonText;
+            Title = ViewModel.PageTitle;
+            var set = this.CreateBindingSet<CityDetailsActivity, CityViewModel>();
+            set.Bind(buttonFavorites).To(vm => vm.AddToFavoritesCommand);
+            set.Apply();
 
-            buttonFavorites.Click += (sender, e) => 
+            if (ViewModel.CityDetails != null)
             {
-                if (!GlobalSettings.FavoritesList.ContainsKey(textCityName.Text))
-                {
-                    GlobalSettings.FavoritesList.Add(textCityName.Text, cityDetails);
-                }
-            };
+                FindViewById<TextView>(Resource.Id.textCity).Text = ViewModel.CityDetails.name;
+                FindViewById<TextView>(Resource.Id.textTemperature).Text = ViewModel.CityDetails.main.temp.ToString();
+                FindViewById<TextView>(Resource.Id.textLatitude).Text = ViewModel.CityDetails.coord.lat.ToString();
+                FindViewById<TextView>(Resource.Id.textLongitude).Text = ViewModel.CityDetails.coord.lon.ToString();
+                FindViewById<TextView>(Resource.Id.textWindSpeed).Text = ViewModel.CityDetails.wind.speed.ToString();
+            }
         }
     }
 }

@@ -1,12 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using MvvmCross.Core.Navigation;
+using MvvmCross.Core.ViewModels;
 using OpenWeather.Interfaces;
 using OpenWeather.Models;
 using OpenWeather.Services;
 
 namespace OpenWeather.ViewModels
 {
-    public class HomeViewModel : BaseViewModel
+    public class HomeViewModel : MvxViewModel
     {
+        private readonly IMvxNavigationService _navigationService;
         private IWeatherService weatherService { get; set; }
 
         public string PageTitle { get; }
@@ -14,22 +18,39 @@ namespace OpenWeather.ViewModels
         public string SearchButtonText { get; set; }
 
 
-        public HomeViewModel()
+        public HomeViewModel(IMvxNavigationService navigationService)
         {
             PageTitle = "Home Screen";
             PlaceHolerText = "Enter City Name";
             SearchButtonText = "Search";
             weatherService = new WeatherService();
+            _navigationService = navigationService;
         }
 
-        /// <summary>
-        /// Gets the weather details for city.
-        /// </summary>
-        /// <returns>The weather for city.</returns>
-        /// <param name="cityName">City name.</param>
-        public async Task<CityWeather> GetWeatherForCity(string cityName)
+        private string _searchMessage;
+        public string SearchText
         {
-            return await weatherService.GetDetailsByCityName(cityName);
+            get { return _searchMessage; }
+
+            set { SetProperty(ref _searchMessage, value); RaisePropertyChanged(() => SearchText); }
+        }
+
+
+        private IMvxCommand searchCommand;
+        public virtual IMvxCommand SearchCommand
+        {
+            get
+            {
+                searchCommand = searchCommand ?? new MvxCommand(() =>
+                {
+                    Task.Run(async () => {
+                        var cityDetails = await weatherService.GetDetailsByCityName(SearchText);
+                        await _navigationService.Navigate<CityViewModel, CityWeather>(cityDetails);
+                    });
+                });
+
+                return searchCommand;
+            }
         }
     }
 }

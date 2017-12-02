@@ -3,32 +3,13 @@
     <Files>
       <File FileName="CAP Status" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="OpenWeather" expanded="True">
-            <Node name="OpenWeather.BDDTest" expanded="True">
-              <Node name="OpenWeather" expanded="True">
-                <Node name="BDDTest" expanded="True">
-                  <Node name="CitySearchFeature" expanded="True">
-                    <Node name="CitySearchFeature(iOS)" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.OpenWeather.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.515FE3FF-F265-439D-889C-BF9FAE1F2D37">
-    <MonoDevelop.MacDev.AppleDevelopmentTeam />
-  </MonoDevelop.Ide.ItemProperties.OpenWeather.iOS>
+  <MonoDevelop.Ide.ItemProperties.OpenWeather.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.515FE3FF-F265-439D-889C-BF9FAE1F2D37" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.OpenWeather.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
 </Properties>

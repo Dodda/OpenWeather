@@ -6,22 +6,21 @@ using System.Collections.Generic;
 using OpenWeather.ViewModels;
 using OpenWeather.Models;
 using Newtonsoft.Json;
+using MvvmCross.Droid.Views;
+using MvvmCross.Binding.BindingContext;
 
 namespace OpenWeather.Droid
 {
     [Activity]
-    public class HomeActivity : Activity
+    public class HomeActivity : MvxActivity<HomeViewModel>
     {
         private ListView favoritesListView;
-        private HomeViewModel ViewModel;
-        private ProgressDialog loadingIndicator;
+        //private ProgressDialog loadingIndicator;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
-            ViewModel = new HomeViewModel();
-            loadingIndicator = new ProgressDialog(this);
             SetContentView(Resource.Layout.HomeLayout);
 
             // Get our button from the layout resource,
@@ -31,27 +30,23 @@ namespace OpenWeather.Droid
             TextView searchText = FindViewById<TextView>(Resource.Id.searchText);
             favoritesListView.ItemClick += FavList_ItemClick;
 
-            //Assigning data from Viewmodel.
+            //MvvmCross Binding for UI Controls.
             searchButton.Text = ViewModel.SearchButtonText;
             searchText.Hint = ViewModel.PlaceHolerText;
             Title = ViewModel.PageTitle;
-
-            searchButton.Click += async (sender, e) =>
-            {
-                loadingIndicator.Show();
-                var cityDetails = await ViewModel.GetWeatherForCity(searchText.Text.Trim());
-                NavigateToCityDetails(cityDetails);
-                loadingIndicator.Hide();
-            };
+            var set = this.CreateBindingSet<HomeActivity, HomeViewModel>();
+            set.Bind(searchText).To(vm => vm.SearchText);
+            set.Bind(searchButton).To(vm => vm.SearchCommand);
+            set.Apply();
         }
 
-        private void NavigateToCityDetails(CityWeather cityDetails)
-        {
-            var cityDetailsJson = JsonConvert.SerializeObject(cityDetails);
-            var cityActivity = new Intent(this, typeof(CityDetailsActivity));
-            cityActivity.PutExtra("JsonData", cityDetailsJson);
-            StartActivity(cityActivity);
-        }
+        //private void NavigateToCityDetails(CityWeather cityDetails)
+        //{
+        //    var cityDetailsJson = JsonConvert.SerializeObject(cityDetails);
+        //    var cityActivity = new Intent(this, typeof(CityDetailsActivity));
+        //    cityActivity.PutExtra("JsonData", cityDetailsJson);
+        //    StartActivity(cityActivity);
+        //}
 
         private void FavList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
@@ -59,7 +54,7 @@ namespace OpenWeather.Droid
             if (GlobalSettings.FavoritesList.ContainsKey(cityName))
             {
                 var cityDetails = GlobalSettings.FavoritesList[cityName];
-                NavigateToCityDetails(cityDetails);
+                //NavigateToCityDetails(cityDetails);
             }
         }
 

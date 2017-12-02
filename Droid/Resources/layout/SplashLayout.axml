@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/splashText"
         android:gravity="center_horizontal"
+        android:text="Open Weather"
         android:textSize="40dp" />
 </LinearLayout>

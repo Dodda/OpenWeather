@@ -2,47 +2,38 @@ using System;
 using UIKit;
 using OpenWeather.ViewModels;
 using OpenWeather.Models;
+using MvvmCross.iOS.Views;
+using MvvmCross.Binding.BindingContext;
 
 namespace OpenWeather.iOS
 {
-    public partial class CityViewController : UIViewController
+    [MvxFromStoryboard("Main")]
+    public partial class CityViewController : MvxViewController<CityViewModel>
     {
-        public CityWeather City;
-
-        private CityViewModel ViewModel { get; set; }
-
         public CityViewController (IntPtr handle) : base (handle)
         {
-            ViewModel = new CityViewModel();
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            //Asinging the data from ViewModel
-            Title = ViewModel.PageTitle;
-            buttonFavorites.SetTitle(ViewModel.ButtonText,UIControlState.Normal);
+            //MvvmCross Binding for UI Controls.
+            buttonFavorites.TitleLabel.Text = ViewModel.ButtonText;
+            var set = this.CreateBindingSet<CityViewController, CityViewModel>();
+            set.Bind(Title).To(vm => vm.PageTitle);
+            set.Bind(buttonFavorites).To(vm => vm.AddToFavoritesCommand);
+            set.Apply();
 
-            if (City != null)
+            if (ViewModel.CityDetails != null)
             {
-                textCityName.Text = City.name;
-                textHumidity.Text = Convert.ToString(City.main.humidity);
-                textLatitude.Text = Convert.ToString(City.coord.lat);
-                textLongitude.Text = Convert.ToString(City.coord.lon);
-                textPressure.Text = Convert.ToString(City.main.pressure);
-                textWindSpeed.Text = Convert.ToString(City.wind.speed);
-                textTemperature.Text = Convert.ToString(City.main.temp);
-            }
-
-            buttonFavorites.TouchUpInside += ButtonFavorites_TouchUpInside;
-        }
-
-        void ButtonFavorites_TouchUpInside(object sender, EventArgs e)
-        {
-            if (!GlobalSettings.FavoritesList.ContainsKey(City.name))
-            {
-                GlobalSettings.FavoritesList.Add(City.name, City);
+                textCityName.Text = ViewModel.CityDetails.name;
+                textHumidity.Text = Convert.ToString(ViewModel.CityDetails.main.humidity);
+                textLatitude.Text = Convert.ToString(ViewModel.CityDetails.coord.lat);
+                textLongitude.Text = Convert.ToString(ViewModel.CityDetails.coord.lon);
+                textPressure.Text = Convert.ToString(ViewModel.CityDetails.main.pressure);
+                textWindSpeed.Text = Convert.ToString(ViewModel.CityDetails.wind.speed);
+                textTemperature.Text = Convert.ToString(ViewModel.CityDetails.main.temp);
             }
         }
     }

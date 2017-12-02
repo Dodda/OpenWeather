@@ -1,48 +1,31 @@
 using System;
-using UIKit;
 using OpenWeather.ViewModels;
-using OpenWeather.Models;
 using System.Collections.Generic;
-
+using MvvmCross.iOS.Views;
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platform;
 namespace OpenWeather.iOS
 {
-    public partial class HomeViewController : UIViewController
+    [MvxFromStoryboard("Main")]
+    public partial class HomeViewController : MvxViewController<HomeViewModel>
     {
-        public HomeViewModel ViewModel { get; set; }
-
         public HomeViewController(IntPtr handle) : base(handle)
         {
-            ViewModel = new HomeViewModel();
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            //Assigning the data from ViewModel
-            Title = ViewModel.PageTitle;
-            ButtonSearch.SetTitle(ViewModel.SearchButtonText,UIControlState.Normal);
+            //MvvmCross Binding for UI Controls.
+
+            ButtonSearch.TitleLabel.Text = ViewModel.SearchButtonText;
             TextSearch.Placeholder = ViewModel.PlaceHolerText;
-
-            ButtonSearch.TouchUpInside += async(sender, e) =>
-            {
-                TextSearch.ResignFirstResponder();
-                ActivityLoader.StartAnimating();
-                var result = await ViewModel.GetWeatherForCity(TextSearch.Text.Trim());
-                ActivityLoader.StopAnimating();
-                NavigateToCityDetails(result);
-            };
-        }
-
-        /// <summary>
-        /// Navigates to city details.
-        /// </summary>
-        /// <param name="result">Result.</param>
-        private void NavigateToCityDetails(CityWeather result)
-        {
-            var cityViewController = Storyboard.InstantiateViewController("CityViewController") as CityViewController;
-            cityViewController.City = result;
-            NavigationController.PushViewController(cityViewController, true);
+            var set = this.CreateBindingSet<HomeViewController, HomeViewModel>();
+            set.Bind(Title).To(vm => vm.PageTitle);
+            set.Bind(ButtonSearch).To(vm => vm.SearchCommand);
+            set.Bind(TextSearch).To(vm => vm.SearchText);
+            set.Apply();
         }
 
         public override void ViewWillAppear(bool animated)
@@ -52,10 +35,10 @@ namespace OpenWeather.iOS
             var source = new FavoriteTableViewSource(new List<string>(GlobalSettings.FavoritesList.Keys));
             TableFavorites.Source = source;
             TableFavorites.ReloadData();
+
             source.SelectedItem += (sender, e) =>
             {
-                var data = GlobalSettings.FavoritesList[e as string];
-                NavigateToCityDetails(data);
+                var cityDetails = GlobalSettings.FavoritesList[e as string];
             };
         }
     }

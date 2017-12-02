@@ -32,12 +32,11 @@
     <Compile Include="Interfaces\IWeatherService.cs" />
     <Compile Include="Services\WeatherService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Models\CityWeather.cs" />
     <Compile Include="Services\ServiceClient.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ViewModels\CityViewModel.cs" />
-    <Compile Include="ViewModels\SplashViewModel.cs" />
+    <Compile Include="App.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -48,6 +47,18 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.5.5.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.5.5.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.5.5.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.5.5.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
