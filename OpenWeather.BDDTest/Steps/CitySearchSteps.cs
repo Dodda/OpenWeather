@@ -14,18 +14,19 @@ namespace OpenWeather.BDDTest
         [When(@"I have entered ""(.*)"" into the textfield")]
         public void WhenIHaveEnteredHyderabadIntoTheTextfield(string cityName)
         {
-            app.EnterText(x => x.Id("searchText"), cityName);  
+            app.EnterText(x => x.Marked("Enter City Name"), cityName);  
         }
 
         [When(@"I press search")]
         public void WhenIPressSearch()
         {
-            app.Tap(x => x.Id("searchButton"));
+            app.Tap(x => x.Marked("Search"));
         }
 
         [Then(@"the result should be displayed on the city details screen")]
         public void ThenTheResultShouldBeOnTheCityDetailsScreen()
         {
+            app.WaitForElement(x => x.Marked("City Weather Details"));
             app.Screenshot("The result on the city details screen");
         }
 
