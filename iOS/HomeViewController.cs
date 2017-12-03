@@ -3,7 +3,6 @@ using OpenWeather.ViewModels;
 using System.Collections.Generic;
 using MvvmCross.iOS.Views;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platform;
 namespace OpenWeather.iOS
 {
     [MvxFromStoryboard("Main")]
@@ -18,20 +17,20 @@ namespace OpenWeather.iOS
             base.ViewDidLoad();
 
             //MvvmCross Binding for UI Controls.
-
-            ButtonSearch.TitleLabel.Text = ViewModel.SearchButtonText;
-            TextSearch.Placeholder = ViewModel.PlaceHolerText;
             var set = this.CreateBindingSet<HomeViewController, HomeViewModel>();
-            set.Bind(Title).To(vm => vm.PageTitle);
+            set.Bind().For(x => x.Title).To(vm => vm.PageTitle);
+            set.Bind(TextSearch).For(x => x.Placeholder).To(vm => vm.PlaceHolerText);
+            set.Bind(ButtonSearch).For(x => x.TitleLabel.Text).To(vm => vm.SearchButtonText);
             set.Bind(ButtonSearch).To(vm => vm.SearchCommand);
             set.Bind(TextSearch).To(vm => vm.SearchText);
+            set.Bind(ActivityLoader).For(x => x.Hidden).To(vm => vm.IsVisible).Mode(MvvmCross.Binding.MvxBindingMode.TwoWay);
             set.Apply();
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-
+            ActivityLoader.StopAnimating();
             var source = new FavoriteTableViewSource(new List<string>(GlobalSettings.FavoritesList.Keys));
             TableFavorites.Source = source;
             TableFavorites.ReloadData();

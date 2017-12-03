@@ -11,28 +11,36 @@ namespace OpenWeather.ViewModels
     public class HomeViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
-        private IWeatherService weatherService { get; set; }
+        private IWeatherService _weatherService { get; set; }
 
         public string PageTitle { get; }
         public string PlaceHolerText { get; set; }
         public string SearchButtonText { get; set; }
 
 
-        public HomeViewModel(IMvxNavigationService navigationService)
+        public HomeViewModel(IWeatherService weatherService, IMvxNavigationService navigationService)
         {
             PageTitle = "Home Screen";
             PlaceHolerText = "Enter City Name";
             SearchButtonText = "Search";
-            weatherService = new WeatherService();
+            _weatherService = weatherService;
             _navigationService = navigationService;
         }
 
-        private string _searchMessage;
+        private string searchMessage;
         public string SearchText
         {
-            get { return _searchMessage; }
+            get { return searchMessage; }
 
-            set { SetProperty(ref _searchMessage, value); RaisePropertyChanged(() => SearchText); }
+            set { SetProperty(ref searchMessage, value); RaisePropertyChanged(() => SearchText); }
+        }
+
+        private bool isVisible = true;
+        public bool IsVisible
+        {
+            get { return isVisible; }
+
+            set { SetProperty(ref isVisible, value); RaisePropertyChanged(() => IsVisible); }
         }
 
 
@@ -44,11 +52,12 @@ namespace OpenWeather.ViewModels
                 searchCommand = searchCommand ?? new MvxCommand(() =>
                 {
                     Task.Run(async () => {
-                        var cityDetails = await weatherService.GetDetailsByCityName(SearchText);
+                        IsVisible = true;
+                        var cityDetails = await _weatherService.GetDetailsByCityName(SearchText);
+                        isVisible = false;
                         await _navigationService.Navigate<CityViewModel, CityWeather>(cityDetails);
                     });
                 });
-
                 return searchCommand;
             }
         }

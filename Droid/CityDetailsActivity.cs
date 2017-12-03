@@ -1,11 +1,8 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Views;
-using Newtonsoft.Json;
-using OpenWeather.Models;
 using OpenWeather.ViewModels;
 namespace OpenWeather.Droid
 {
@@ -20,9 +17,9 @@ namespace OpenWeather.Droid
             Button buttonFavorites = FindViewById<Button>(Resource.Id.btnAddToFav);
 
             //MvvmCross Binding for UI Controls.
-            buttonFavorites.Text = ViewModel.ButtonText;
             Title = ViewModel.PageTitle;
             var set = this.CreateBindingSet<CityDetailsActivity, CityViewModel>();
+            set.Bind(buttonFavorites).For(x => x.Text).To(vm => vm.ButtonText);
             set.Bind(buttonFavorites).To(vm => vm.AddToFavoritesCommand);
             set.Apply();
 

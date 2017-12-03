@@ -1,7 +1,5 @@
 using System;
-using UIKit;
 using OpenWeather.ViewModels;
-using OpenWeather.Models;
 using MvvmCross.iOS.Views;
 using MvvmCross.Binding.BindingContext;
 
@@ -18,11 +16,13 @@ namespace OpenWeather.iOS
         {
             base.ViewDidLoad();
 
+
+
             //MvvmCross Binding for UI Controls.
-            buttonFavorites.TitleLabel.Text = ViewModel.ButtonText;
             var set = this.CreateBindingSet<CityViewController, CityViewModel>();
-            set.Bind(Title).To(vm => vm.PageTitle);
+            set.Bind().For(x => x.Title).To(vm => vm.PageTitle);
             set.Bind(buttonFavorites).To(vm => vm.AddToFavoritesCommand);
+            set.Bind(buttonFavorites).For(x => x.TitleLabel.Text).To(vm => vm.ButtonText);
             set.Apply();
 
             if (ViewModel.CityDetails != null)
