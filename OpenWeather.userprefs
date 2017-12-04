@@ -6,8 +6,16 @@
     <Pads>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="OpenWeather" expanded="True" selected="True">
-            <Node name="OpenWeather.BDDTest" expanded="True" />
+          <Node name="OpenWeather" expanded="True">
+            <Node name="OpenWeather.UnitTest" expanded="True">
+              <Node name="OpenWeather" expanded="True">
+                <Node name="UnitTest" expanded="True">
+                  <Node name="WeatherServiceTest" expanded="True">
+                    <Node name="Get_City_Weather_Details_Success" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>

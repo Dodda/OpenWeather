@@ -53,13 +53,23 @@ namespace OpenWeather.ViewModels
                 {
                     Task.Run(async () => {
                         IsVisible = true;
-                        var cityDetails = await _weatherService.GetDetailsByCityName(SearchText);
+                        var cityDetails = await GetCityWeatherDetails(SearchText);
                         isVisible = false;
                         await _navigationService.Navigate<CityViewModel, CityWeather>(cityDetails);
                     });
                 });
                 return searchCommand;
             }
+        }
+
+        /// <summary>
+        /// Gets the city weather details.
+        /// </summary>
+        /// <returns>The city weather details.</returns>
+        /// <param name="cityName">City name.</param>
+        public async Task<CityWeather> GetCityWeatherDetails(string cityName)
+        {
+            return await _weatherService.GetDetailsByCityName(cityName);
         }
     }
 }
