@@ -34,11 +34,6 @@ namespace OpenWeather.iOS
             var source = new FavoriteTableViewSource(new List<string>(GlobalSettings.FavoritesList.Keys));
             TableFavorites.Source = source;
             TableFavorites.ReloadData();
-
-            source.SelectedItem += (sender, e) =>
-            {
-                var cityDetails = GlobalSettings.FavoritesList[e as string];
-            };
         }
     }
 }

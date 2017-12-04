@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using OpenWeather.Interfaces;
 using OpenWeather.Models;
-using OpenWeather.Services;
 
 namespace OpenWeather.ViewModels
 {

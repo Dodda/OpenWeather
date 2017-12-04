@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.UITest;
+﻿using Xamarin.UITest;
 
 namespace OpenWeather.BDDTest
 {

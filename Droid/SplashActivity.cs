@@ -1,10 +1,5 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Android.App;
-using Android.OS;
-using Android.Widget;
+﻿using Android.App;
 using MvvmCross.Droid.Views;
-using OpenWeather.ViewModels;
 
 namespace OpenWeather.Droid
 {

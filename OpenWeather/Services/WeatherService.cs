@@ -9,15 +9,12 @@ namespace OpenWeather.Services
 {
     public class WeatherService : IWeatherService
     {
-        private const string APP_ID = "&APPID=2040cf2ca882ebb88f12a58fcd5b73e1";
-        private const string APP_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-
         public async Task<CityWeather> GetDetailsByCityName(string cityName)
         {
             HttpClient client = ServiceClient.GetClient();
 
             string responseResult = string.Empty;
-            string requestUrl = $"{APP_URL}{cityName}{APP_ID}";
+            string requestUrl = $"{GlobalSettings.Url}{cityName}{GlobalSettings.ApplicationId}";
 
             HttpResponseMessage response;
             try
